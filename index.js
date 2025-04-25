@@ -3,10 +3,14 @@ const fs = require('fs');
 const path = require('path');
 
 const app = express();
-const PORT = process.env.PORT || 3000;  
+const PORT = 3000;
+
+
+// Serve all files in the current directory
+app.use(express.static(__dirname));
 
 app.get('/data', (req, res) => {
-  const filePath = path.join(__dirname, 'data.json');
+  const filePath = path.join(__dirname, 'd.json');
 
   fs.readFile(filePath, 'utf8', (err, data) => {
     if (err) {
